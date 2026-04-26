@@ -1,6 +1,7 @@
-import 'package:fit_flow/main.dart';
 import 'package:flutter/material.dart';
+import 'package:fit_flow/core/routing/app_router.dart';
+import 'package:fit_flow/main.dart';
 
 void main() {
-  runApp(const FitFlowApp(appTitle: 'Fit Flow Dev'));
+  runApp(FitFlowApp(appRouter: AppRouter(),));
 }
