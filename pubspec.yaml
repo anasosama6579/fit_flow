@@ -36,4 +36,14 @@ flutter:
         - asset: assets/fonts/Lexend-Bold.ttf
           style: normal
           weight: 700
+    - family: PlusJakartaSans
+      fonts:
+        - asset: assets/fonts/PlusJakartaSans-Bold.ttf
+          style: normal
+          weight: 700
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter_18pt-Regular.ttf
+          style: normal
+          weight: 400
 
