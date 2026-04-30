@@ -1,7 +1,10 @@
+import 'dart:developer';
+
 import 'package:fit_flow/core/helper/assets.dart';
 import 'package:fit_flow/features/onboarding/ui/widgets/plan_option.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fit_flow/features/onboarding/data/repos/shared_prefs_onboarding_repo_imp.dart';
 
 class PlanOptionsList extends StatefulWidget {
   const PlanOptionsList({super.key});
@@ -11,34 +14,52 @@ class PlanOptionsList extends StatefulWidget {
 }
 
 class _PlanOptionsListState extends State<PlanOptionsList> {
-  String _selectedPlan = "Get Strong";
+  late String _selectedPlan;
+  final SharedPrefsOnboardingRepoImp _onboardingRepo =
+      SharedPrefsOnboardingRepoImp();
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedPlan = _onboardingRepo.getPlanGoal() ?? "get_strong";
+  }
 
   @override
   Widget build(BuildContext context) {
+    log(_selectedPlan);
     return Column(
       children: [
         PlanOption(
           title: "Gain Muscle",
           subtitle: "Focus on hypertrophy and strength",
           icon: Assets.dumbleSvg,
-          isSelected: _selectedPlan == "Gain Muscle",
-          onTap: () => setState(() => _selectedPlan = "Gain Muscle"),
+          isSelected: _selectedPlan == "gain_muscle",
+          onTap: () {
+            setState(() => _selectedPlan = "gain_muscle");
+            _onboardingRepo.savePlanGoal("gain_muscle");
+          },
         ),
         SizedBox(height: 12.h),
         PlanOption(
           title: "Get Strong",
           subtitle: "Prioritize heavy lifting and power.",
           icon: Assets.weightSvg,
-          isSelected: _selectedPlan == "Get Strong",
-          onTap: () => setState(() => _selectedPlan = "Get Strong"),
+          isSelected: _selectedPlan == "get_strong",
+          onTap: () {
+            setState(() => _selectedPlan = "get_strong");
+            _onboardingRepo.savePlanGoal("get_strong");
+          },
         ),
         SizedBox(height: 12.h),
         PlanOption(
           title: "General Fitness",
           subtitle: "Balanced health and mobility",
           icon: Assets.streangthSvg,
-          isSelected: _selectedPlan == "General Fitness",
-          onTap: () => setState(() => _selectedPlan = "General Fitness"),
+          isSelected: _selectedPlan == "general_fitness",
+          onTap: () {
+            setState(() => _selectedPlan = "general_fitness");
+            _onboardingRepo.savePlanGoal("general_fitness");
+          },
         ),
       ],
     );

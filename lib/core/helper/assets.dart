@@ -8,4 +8,6 @@ class Assets {
   static const String streangthSvg = "assets/svgs/streangth.svg";
   static const String weightSvg = "assets/svgs/weight.svg";
   static const String arrowRightSvg = "assets/svgs/right_arrow.svg";
+  static const String settingSvg = "assets/svgs/setting.svg";
+  static const String playIconSvg = "assets/svgs/play-icon.svg";
 }

@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "163359601019",
+    "project_id": "fit-flow-dev-3fd21",
+    "storage_bucket": "fit-flow-dev-3fd21.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163359601019:android:a1203dc0ec6e2acae04dde",
+        "android_client_info": {
+          "package_name": "com.example.fit_flow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBinhcUI4qpRBGHCK51aPlBCW0JoS3_1hc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:163359601019:android:c1da12dbf0ae7b62e04dde",
+        "android_client_info": {
+          "package_name": "com.example.fit_flow.dev"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBinhcUI4qpRBGHCK51aPlBCW0JoS3_1hc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

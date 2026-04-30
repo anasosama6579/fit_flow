@@ -1,5 +1,6 @@
 import 'package:fit_flow/core/routing/app_router.dart';
 import 'package:fit_flow/core/routing/routes.dart';
+import 'package:fit_flow/core/theming/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -16,9 +17,7 @@ class FitFlowApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) {
         return MaterialApp(
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          ),
+          theme: ThemeData(scaffoldBackgroundColor: AppColors.whiteBackground),
           initialRoute: Routes.splash,
           debugShowCheckedModeBanner: false,
           onGenerateRoute: appRouter.generateRoute,
@@ -27,4 +26,3 @@ class FitFlowApp extends StatelessWidget {
     );
   }
 }
-

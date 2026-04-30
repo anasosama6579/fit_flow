@@ -1,8 +1,12 @@
+import 'dart:developer';
+
 import 'package:fit_flow/core/helper/assets.dart';
 import 'package:fit_flow/core/theming/app_colors.dart';
 import 'package:fit_flow/core/theming/app_styles.dart';
 import 'package:fit_flow/core/widgets/custom_button.dart';
-import 'package:fit_flow/features/onboarding/ui/widgets/custom_appbar.dart';
+import 'package:fit_flow/features/home/ui/home_screen.dart';
+import 'package:fit_flow/features/onboarding/data/repos/shared_prefs_onboarding_repo_imp.dart';
+import 'package:fit_flow/features/onboarding/ui/widgets/onboarding_app_bar.dart';
 import 'package:fit_flow/features/onboarding/ui/widgets/day_option.dart';
 import 'package:fit_flow/features/onboarding/ui/widgets/plan_options_list.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +26,7 @@ class OnboardingScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              CustomAppbar(),
+              OnboardingAppBar(),
               SizedBox(height: 70.h),
               Text("Select Your Goal", style: AppStyles.font34ExtraBoldBlack),
               SizedBox(height: 8.h),
@@ -37,7 +41,14 @@ class OnboardingScreen extends StatelessWidget {
               WeeklyAvailability(),
               Spacer(),
               CustomButton(
-                ontap: () {}, // Navigate to Home Screen
+                ontap: () {
+                  SharedPrefsOnboardingRepoImp().saveOnboardingCompleted(true);
+
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  );
+                },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

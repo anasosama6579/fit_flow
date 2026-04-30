@@ -61,6 +61,13 @@ class AppStyles {
     fontWeight: FontWeight.w600,
   );
 
+  static TextStyle font13SemiBoldMainBlue = TextStyle(
+    fontFamily: "Inter",
+    color: AppColors.mainBlue,
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w600,
+  );
+
   static TextStyle font10SemiBoldLightGrey = TextStyle(
     fontFamily: "Inter",
     color: AppColors.lightGrey,
@@ -77,8 +84,38 @@ class AppStyles {
 
   static TextStyle font13RegularDarkGrey = TextStyle(
     fontFamily: "Inter",
-    color: AppColors.darkGreyText,
+    color: AppColors.grey,
     fontSize: 13.sp,
     fontWeight: FontWeight.normal,
+  );
+  static TextStyle font20BoldMainBlue = TextStyle(
+    fontFamily: "PlusJakartaSans",
+    color: AppColors.mainBlue,
+    fontSize: 20.sp,
+    fontWeight: FontWeight.bold,
+  );
+  static TextStyle font12RegularLightGrey = TextStyle(
+    fontFamily: "Inter",
+    color: AppColors.lightGrey,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w500,
+  );
+  static TextStyle font12RegularGrey = TextStyle(
+    fontFamily: "Inter",
+    color: AppColors.grey,
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w500,
+  );
+  static TextStyle font16RegularWhite = TextStyle(
+    fontFamily: "PlusJakartaSans",
+    color: AppColors.white,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w300,
+  );
+  static TextStyle font16RegularBlack = TextStyle(
+    fontFamily: "PlusJakartaSans",
+    color: AppColors.black,
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w300,
   );
 }
