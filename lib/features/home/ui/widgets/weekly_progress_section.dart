@@ -1,18 +1,13 @@
-import 'package:fit_flow/core/helper/date_helper.dart';
+// Removed DateHelper import
 import 'package:fit_flow/core/theming/app_colors.dart';
 import 'package:fit_flow/features/home/ui/widgets/day_and_date.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class WeeklyProgressSection extends StatefulWidget {
-  const WeeklyProgressSection({super.key});
+class WeeklyProgressSection extends StatelessWidget {
+  final List<Map<String, dynamic>> weekDays;
 
-  @override
-  State<WeeklyProgressSection> createState() => _WeeklyProgressSectionState();
-}
-
-class _WeeklyProgressSectionState extends State<WeeklyProgressSection> {
-  List<Map<String, dynamic>> weekDays = DateHelper.getCurrentWeekDays();
+  const WeeklyProgressSection({super.key, required this.weekDays});
 
   @override
   Widget build(BuildContext context) {

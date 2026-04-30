@@ -1,10 +1,8 @@
-import 'dart:developer';
-
 import 'package:fit_flow/core/helper/assets.dart';
 import 'package:fit_flow/core/theming/app_colors.dart';
 import 'package:fit_flow/core/theming/app_styles.dart';
 import 'package:fit_flow/core/widgets/custom_button.dart';
-import 'package:fit_flow/features/home/ui/home_screen.dart';
+import 'package:fit_flow/core/routing/routes.dart';
 import 'package:fit_flow/features/onboarding/data/repos/shared_prefs_onboarding_repo_imp.dart';
 import 'package:fit_flow/features/onboarding/ui/widgets/onboarding_app_bar.dart';
 import 'package:fit_flow/features/onboarding/ui/widgets/day_option.dart';
@@ -44,10 +42,7 @@ class OnboardingScreen extends StatelessWidget {
                 ontap: () {
                   SharedPrefsOnboardingRepoImp().saveOnboardingCompleted(true);
 
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const HomeScreen()),
-                  );
+                  Navigator.pushReplacementNamed(context, Routes.home);
                 },
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

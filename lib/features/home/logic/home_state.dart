@@ -8,8 +8,10 @@ class HomeLoading extends HomeState {}
 
 class HomeSuccess extends HomeState {
   final WorkoutPlanModel workoutPlan;
+  final int currentWorkoutDayIndex;
+  final List<Map<String, dynamic>> weekDays;
 
-  HomeSuccess(this.workoutPlan);
+  HomeSuccess(this.workoutPlan, this.currentWorkoutDayIndex, this.weekDays);
 }
 
 class HomeFailure extends HomeState {

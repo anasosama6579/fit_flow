@@ -6,6 +6,8 @@ import 'package:fit_flow/core/widgets/icon_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fit_flow/features/home/logic/home_cubit.dart';
 
 class StartWorkoutSection extends StatelessWidget {
   const StartWorkoutSection({super.key, required this.title});
@@ -42,7 +44,9 @@ class StartWorkoutSection extends StatelessWidget {
           Text(title, style: AppStyles.font18BoldBlack),
           SizedBox(height: 28.h),
           CustomButton(
-            ontap: () {},
+            ontap: () {
+              context.read<HomeCubit>().startWorkout();
+            },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

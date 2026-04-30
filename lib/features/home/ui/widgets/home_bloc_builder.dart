@@ -1,4 +1,5 @@
 import 'package:fit_flow/core/theming/app_styles.dart';
+import 'package:fit_flow/core/widgets/custom_button.dart';
 import 'package:fit_flow/features/home/logic/home_cubit.dart';
 import 'package:fit_flow/features/home/logic/home_state.dart';
 import 'package:fit_flow/features/home/ui/widgets/exercice_card.dart';
@@ -30,13 +31,17 @@ class HomeBlocBuilder extends StatelessWidget {
           );
         }
         if (state is HomeSuccess) {
-          var exercises = state.workoutPlan.days[2].exercises;
+          int dayIndex =
+              state.currentWorkoutDayIndex < state.workoutPlan.days.length
+              ? state.currentWorkoutDayIndex
+              : 0;
+          var exercises = state.workoutPlan.days[dayIndex].exercises;
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text("Weekly Progress", style: AppStyles.font18BoldBlack),
               SizedBox(height: 12.h),
-              WeeklyProgressSection(),
+              WeeklyProgressSection(weekDays: state.weekDays),
               SizedBox(height: 24.h),
               StartWorkoutSection(title: state.workoutPlan.title),
               SizedBox(height: 12.h),
@@ -52,14 +57,24 @@ class HomeBlocBuilder extends StatelessWidget {
             ],
           );
         }
-        return Column(
-          children: [
-            Text(
-              "Your Workout plan is not updated yet",
-              style: AppStyles.font18BoldBlack,
-            ),
-          ],
-        );
+        if (state is HomeFailure) {
+          return Column(
+            children: [
+              Text(
+                "Your Workout plan is not updated yet",
+                style: AppStyles.font18BoldBlack,
+              ),
+              Text(state.message),
+              CustomButton(
+                ontap: () {
+                  context.read<HomeCubit>().fetchWorkoutPlan();
+                },
+                child: Text("Update Workout Plan"),
+              ),
+            ],
+          );
+        }
+        return SizedBox.shrink();
       },
     );
   }
