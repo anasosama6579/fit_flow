@@ -15,7 +15,7 @@ class FirebaseWorkoutRepoImp implements WorkoutRepo {
     try {
       final String mappedFrequency = _mapFrequency(frequency);
       final String cacheKey = "${goal}_$mappedFrequency";
-      
+
       // 1. Check local Hive cache first
       var box = Hive.box<WorkoutPlanModel>(StorageKeys.workoutPlanBox);
       if (box.containsKey(cacheKey)) {
@@ -35,10 +35,10 @@ class FirebaseWorkoutRepoImp implements WorkoutRepo {
           final workoutPlan = WorkoutPlanModel.fromJson(
             data[mappedFrequency] as Map<String, dynamic>,
           );
-          
+
           // 3. Save to Hive cache
           await box.put(cacheKey, workoutPlan);
-          
+
           return workoutPlan;
         }
       }
@@ -70,10 +70,10 @@ class FirebaseWorkoutRepoImp implements WorkoutRepo {
   @override
   Future<bool> isUpdated() {
     // get the last updated time from firebase
-    final lastUpdated = _firestore
+    final isUpdated = _firestore
         .collection('workout_plans')
-        .doc('last_updated')
+        .doc('is_updated')
         .get();
-    return lastUpdated.then((value) => value.exists);
+    return isUpdated.then((value) => value.exists);
   }
 }

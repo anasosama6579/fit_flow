@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fit_flow/core/theming/app_styles.dart';
 import 'package:fit_flow/core/widgets/custom_button.dart';
 import 'package:fit_flow/features/home/logic/home_cubit.dart';
@@ -58,6 +60,7 @@ class HomeBlocBuilder extends StatelessWidget {
           );
         }
         if (state is HomeFailure) {
+          log(state.message);
           return Column(
             children: [
               Text(

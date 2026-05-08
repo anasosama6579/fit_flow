@@ -40,7 +40,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> checkWorkoutUpdates() async {
     final bool updated = await _workoutRepo.isUpdated();
-    if (!updated) {
+    if (updated) {
       fetchWorkoutPlan();
     }
   }

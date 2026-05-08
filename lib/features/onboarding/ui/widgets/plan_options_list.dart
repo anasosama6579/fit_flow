@@ -33,10 +33,10 @@ class _PlanOptionsListState extends State<PlanOptionsList> {
           title: "Gain Muscle",
           subtitle: "Focus on hypertrophy and strength",
           icon: Assets.dumbleSvg,
-          isSelected: _selectedPlan == "gain_muscle",
+          isSelected: _selectedPlan == "build_muscle",
           onTap: () {
-            setState(() => _selectedPlan = "gain_muscle");
-            _onboardingRepo.savePlanGoal("gain_muscle");
+            setState(() => _selectedPlan = "build_muscle");
+            _onboardingRepo.savePlanGoal("build_muscle");
           },
         ),
         SizedBox(height: 12.h),
