@@ -6,4 +6,5 @@ class StorageKeys {
   static const String cachedWorkoutPlan = "CACHED_WORKOUT_PLAN";
   static const String weekDataKey = 'weekly_progress_data';
   static const String workoutDayIndexKey = 'workout_day_index';
+  static const String userDataBox = 'USER_DATA_BOX';
 }

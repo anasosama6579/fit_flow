@@ -14,5 +14,6 @@ class HiveHelper {
     
     // Open boxes
     await Hive.openBox<WorkoutPlanModel>(StorageKeys.workoutPlanBox);
+    await Hive.openBox(StorageKeys.userDataBox);
   }
 }

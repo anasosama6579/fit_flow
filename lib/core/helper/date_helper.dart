@@ -1,12 +1,11 @@
 import 'dart:convert';
-import 'package:fit_flow/core/storage/shared_pref_helper.dart';
 import 'package:fit_flow/core/storage/storage_keys.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 class DateHelper {
   static List<Map<String, dynamic>> getCurrentWeekDays() {
-    final String? jsonString = SharedPrefsHelper.getData(
-      key: StorageKeys.weekDataKey,
-    );
+    final box = Hive.box(StorageKeys.userDataBox);
+    final String? jsonString = box.get(StorageKeys.weekDataKey);
     if (jsonString != null) {
       final List<dynamic> decoded = jsonDecode(jsonString);
       final List<Map<String, dynamic>> storedWeek = decoded
@@ -41,21 +40,18 @@ class DateHelper {
 
   static Future<void> saveWeekDays(List<Map<String, dynamic>> weekDays) async {
     final jsonString = jsonEncode(weekDays);
-    await SharedPrefsHelper.saveData(
-      key: StorageKeys.weekDataKey,
-      value: jsonString,
-    );
+    final box = Hive.box(StorageKeys.userDataBox);
+    await box.put(StorageKeys.weekDataKey, jsonString);
   }
 
   static int getWorkoutDayIndex() {
-    return SharedPrefsHelper.getData(key: StorageKeys.workoutDayIndexKey) ?? 0;
+    final box = Hive.box(StorageKeys.userDataBox);
+    return box.get(StorageKeys.workoutDayIndexKey, defaultValue: 0);
   }
 
   static Future<void> saveWorkoutDayIndex(int index) async {
-    await SharedPrefsHelper.saveData(
-      key: StorageKeys.workoutDayIndexKey,
-      value: index,
-    );
+    final box = Hive.box(StorageKeys.userDataBox);
+    await box.put(StorageKeys.workoutDayIndexKey, index);
   }
 
   static const List<String> _weekDayNames = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
